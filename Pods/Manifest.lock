@@ -7,6 +7,7 @@ PODS:
   - OAuthSwiftAlamofire (0.1.0):
     - Alamofire
     - OAuthSwift
+  - RSKPlaceholderTextView (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - KeychainAccess
   - OAuthSwift
   - OAuthSwiftAlamofire
+  - RSKPlaceholderTextView
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -21,7 +23,8 @@ SPEC CHECKSUMS:
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   OAuthSwift: 6e3a103b3e5639411769cc7e199ec7e14bd1547f
   OAuthSwiftAlamofire: 20bb998ac506f82c3bab0625fbc98a9c6fca783f
+  RSKPlaceholderTextView: 0ce73a19998e236323b3f1f16bf4a4e4a76c2c28
 
-PODFILE CHECKSUM: 4fcc82e4fba7cdd759748d6a2c409c7086435490
+PODFILE CHECKSUM: a2d96d619910c44e7c235171573529042303362e
 
 COCOAPODS: 1.4.0

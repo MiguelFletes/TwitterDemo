@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{//}, ComposeViewControllerDelegate {
     
     var tweets: [Tweet] = []
     var refreshControl: UIRefreshControl!
@@ -63,19 +63,28 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         APIManager.shared.logout()
     }
     
+    @IBAction func onCompose(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name("onCompose"), object: nil)
+    }
+    
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    @IBAction func onProfile(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name("goProfile"), object: nil)
+    }
+    
+    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+        
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let tweet = tweets[indexPath.row]
+                let detailViewController = segue.destination as! DetailsViewController
+                detailViewController.tweet = tweet
+            }
+        }
     
 }

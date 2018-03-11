@@ -25,7 +25,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = loginVC
         }
         
+        NotificationCenter.default.addObserver(forName: Notification.Name("onCompose"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("compose notification received")
+            self.compose()
+        }
+        NotificationCenter.default.addObserver(forName: Notification.Name("goBack"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("Cancel notification received")
+            self.goBack()
+        }
+        NotificationCenter.default.addObserver(forName: Notification.Name("goProfile"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("Profile notification received")
+            self.goProfile()
+        }
+        if User.current != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            // view controller currently being set in Storyboard as default will be overridden
+            //   let loggedInViewController = storyboard.instantiateViewController(withIdentifier: "tabBar")
+            // self.window?.rootViewController = loggedInViewController
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")//PUT_YOUR_LOGIN_VC_ID_HERE
+            window?.rootViewController = loginViewController
+            
+        }
         return true
+    }
+    
+    func compose() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "ComposeNav")
+        self.window?.rootViewController = loginViewController
+    }
+    func goBack() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+        self.window?.rootViewController = loginViewController
+    }
+    func goProfile() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
+        self.window?.rootViewController = loginViewController
     }
     
     // MARK: TODO: Open URL
